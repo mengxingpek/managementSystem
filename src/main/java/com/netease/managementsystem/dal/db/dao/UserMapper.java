@@ -3,6 +3,7 @@ package com.netease.managementsystem.dal.db.dao;
 import com.netease.managementsystem.vo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
