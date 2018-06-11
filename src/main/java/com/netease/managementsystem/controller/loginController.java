@@ -20,7 +20,7 @@ public class loginController {
     @RequestMapping(value = "/login")
     public String login() {
         System.out.println("mengxing hello");
-        return  "mengxing";
+        return  "login";
 
     }
 
