@@ -4,7 +4,7 @@ import com.netease.managementsystem.dal.db.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -15,9 +15,9 @@ public class RegisterController {
     private UserMapper userMapper;
 
 
-    @RequestMapping(value = "/register")
+    @RequestMapping(value = "/register" , method = RequestMethod.GET)
     public String register() {
-        System.out.println("mengxing hello");
+        System.out.println("entering registration");
         return  "register";
 
     }
