@@ -18,6 +18,7 @@ public interface UserMapper {
     @Select("select * from people where id = #{id}")
     User getUserByID(int id);
 
+
     @Insert({
             "insert into people ( username, ",
             "sex, address, ",

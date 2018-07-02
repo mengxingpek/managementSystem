@@ -35,6 +35,7 @@ public class UserController {
                              @RequestParam("address" )String address,
                              @RequestParam("birthday") String birthday) {
         System.out.println("entering insertUser");
+
         User user = new User();
         user.setAddress(address);
         user.setSex(Integer.parseInt(sex));
