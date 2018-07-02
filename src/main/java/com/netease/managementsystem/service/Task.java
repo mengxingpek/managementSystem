@@ -1,4 +1,4 @@
-package com.netease.managementsystem.vo;
+package com.netease.managementsystem.service;
 
 
 import org.springframework.context.annotation.Bean;

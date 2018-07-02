@@ -1,9 +1,8 @@
 package com.netease.managementsystem;
 
-import com.netease.managementsystem.vo.Task;
+import com.netease.managementsystem.service.Task;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.EnableAsync;
 
