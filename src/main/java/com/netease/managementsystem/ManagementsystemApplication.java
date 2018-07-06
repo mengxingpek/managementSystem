@@ -1,30 +1,55 @@
 package com.netease.managementsystem;
 
-import com.netease.managementsystem.service.Task;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
 @EnableAsync
 public class ManagementsystemApplication {
 
+
+
+
+    @Bean
+    public AsyncTaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setThreadNamePrefix("MengXing-Executor ");
+
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(5);
+        // 设置拒绝策略
+        executor.setRejectedExecutionHandler(new RejectedExecutionHandler() {
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                System.out.println("rejected");
+            }
+        });
+        // 使用预定义的异常处理类
+        // executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+
+        return executor;
+    }
+
+
+
+
     public static void main(String[] args) throws InterruptedException {
+
+
         ConfigurableApplicationContext context = SpringApplication.run(ManagementsystemApplication.class, args);
 
 
-        context.getBean(Task.class).doTaskOne();
-        context.getBean(Task.class).doTaskTwo();
-        for(int i=0;i<=10;i++) {
-            TimeUnit.MICROSECONDS.sleep(1);
-            System.out.println("-------------------");
-        }
 
-        context.close();
 
     }
 }
