@@ -15,7 +15,7 @@ import java.util.Date;
 @Service
 public class ThreadLocalVarPrintTask {
 
-    // ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值
+    // 通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值
     private static ThreadLocal<User> seqNum = new ThreadLocal<User>() {
         public User initialValue() {
             User user = new User();
@@ -27,7 +27,7 @@ public class ThreadLocalVarPrintTask {
         }
     };
 
-    // ②获取下一个序列值
+    // 获取下一个序列值
     public int getUserID() {
 
         User user = seqNum.get();
@@ -57,7 +57,7 @@ public class ThreadLocalVarPrintTask {
 
         public void run() {
             for (int i = 0; i < 3; i++) {
-                // ④每个线程打出3个序列值
+                // 每个线程打出3个序列值
                 // 说明哪怕ThreadLocal是可变对象 也是各线程独立的
                 System.out.println("thread[" + Thread.currentThread().getName() + "] --> sn["
                         + sn.getUserID() + "]");
