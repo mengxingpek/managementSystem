@@ -29,7 +29,6 @@ public class loginController {
     @RequestMapping(value = "/logout")
     public String logout() {
         System.out.println("logout");
-        System.out.println();
         return "mengxing logout";
     }
 
