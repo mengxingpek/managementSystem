@@ -14,6 +14,12 @@
     </div>
 
     <div>
+        <text>密码</text>
+        <input type="text" name="password">
+    </div>
+
+
+    <div>
         <text>性别</text>
         <input type="text"name="sex">
     </div>

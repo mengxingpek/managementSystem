@@ -18,17 +18,20 @@ public class loginController {
     private UserMapper userMapper;
 
 
+
     @RequestMapping(value = "/login")
     public String login() {
-        System.out.println("mengxing hello");
-        return  "index";
+
+        return  "login";
 
     }
 
 
+
+
+
     @RequestMapping(value = "/logout")
     public String logout() {
-        System.out.println("logout");
         return "mengxing logout";
     }
 
