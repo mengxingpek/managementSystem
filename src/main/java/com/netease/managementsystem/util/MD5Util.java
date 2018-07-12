@@ -67,7 +67,7 @@ public class MD5Util {
         }
     }
 
-    //解密
+    // password明文用此加密
     public final static String password(String s) {
         return md5(md5(s)+ENCODE);
     }

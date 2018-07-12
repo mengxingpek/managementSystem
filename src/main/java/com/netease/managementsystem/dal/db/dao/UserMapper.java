@@ -25,12 +25,12 @@ public interface UserMapper {
     @Insert({
             "insert into user ( username, ",
             "sex, address, ",
-            "birthday) ",
-            "password" ,
-            "create_time" ,
+            "birthday ,",
+            "password ," ,
+            "create_time )" ,
             "values (#{username,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, ",
             "#{address,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{password,jdbcType=VARCHAR}," ,
-            "#{createTime,jdbcType=TIMESTAMP}, ) "
+            "#{createTime,jdbcType=TIMESTAMP} ) "
     })
     void insertUser(User user);
 
