@@ -19,6 +19,7 @@ public class User {
     private Integer sex;
     private String address;
     private Date birthday;
+    //数据库中得到的密码 已通过md5加密
     private String password;
     private Timestamp createTime;
 

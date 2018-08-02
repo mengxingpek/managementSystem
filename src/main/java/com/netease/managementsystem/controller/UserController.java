@@ -4,6 +4,9 @@ package com.netease.managementsystem.controller;
 import com.netease.managementsystem.dal.db.dao.UserMapper;
 import com.netease.managementsystem.util.MD5Util;
 import com.netease.managementsystem.vo.User;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,23 +36,38 @@ public class UserController {
     public String verifyLoginUser(@RequestParam("userName") String name ,
                                 @RequestParam("password") String password) {
         System.out.println("verifying");
-        User user = userMapper.getUserByName(name);
-        if(user == null) {
-            System.out.println("unregisted");
-            return "unregisted";
-        } else {
-            String codedPassword = MD5Util.password(password);
-            if(codedPassword.equals(user.getPassword())) {
-                System.out.println("success");
-                return "success";
-            } else {
-                System.out.println("codedPassword " +codedPassword);
-                System.out.println("password" + password);
-                System.out.println("user.getPassword " + user.getPassword());
-                System.out.println("woring passwrpd");
-                return "wrong password";
-            }
-        }
+
+        Subject currentUser = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(name,password);
+        currentUser.login(token);
+
+        return "success";
+
+
+
+//        User user = userMapper.getUserByName(name);
+//        if(user == null) {
+//            System.out.println("unregisted");
+//            return "unregisted";
+//        } else {
+//            String codedPassword = MD5Util.password(password);
+//            if(codedPassword.equals(user.getPassword())) {
+//                System.out.println("success");
+//                return "success";
+//            } else {
+//                System.out.println("codedPassword " +codedPassword);
+//                System.out.println("password" + password);
+//                System.out.println("user.getPassword " + user.getPassword());
+//                System.out.println("woring passwrpd");
+//                return "wrong password";
+//            }
+//        }
+
+
+
+
+
+
 
 
 

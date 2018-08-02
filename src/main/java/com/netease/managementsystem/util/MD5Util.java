@@ -72,7 +72,14 @@ public class MD5Util {
         return md5(md5(s)+ENCODE);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(MD5Util.password("1"));
+
+        long start = System.currentTimeMillis();
+        Thread.sleep(5123);
+        long end = System.currentTimeMillis();
+        long duration = end - start;
+        System.out.println(duration/1000.0);
+
     }
 }
