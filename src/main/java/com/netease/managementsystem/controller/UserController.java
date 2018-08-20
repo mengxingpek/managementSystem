@@ -21,6 +21,10 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+
+
+
+
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
@@ -30,10 +34,10 @@ public class UserController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public User insertUser(@RequestParam("name") String name ,
-                             @RequestParam("sex") String sex,
-                             @RequestParam("address" )String address,
-                             @RequestParam("birthday") String birthday) {
+    public User insertUser(@RequestParam("name") String name,
+                           @RequestParam("sex") String sex,
+                           @RequestParam("address") String address,
+                           @RequestParam("birthday") String birthday) {
         System.out.println("entering insertUser");
 
         User user = new User();
@@ -55,24 +59,14 @@ public class UserController {
         return user;
 
 
-
-
     }
 
 
-
-    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUserByID(@PathVariable("id") int id) {
         User aUser = userMapper.getUserByID(id);
         return aUser;
     }
-
-
-
-
-
-
-
 
 
 }
